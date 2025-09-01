@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block content %}
+  <a class="btn btn-primary mb-3" href="{{ url_for('add') }}">Добавить заметку</a>
+  {% if notes %}
+    <ul class="list-group">
+      {% for note in notes %}
+        <li class="list-group-item d-flex justify-content-between align-items-start">
+          <div class="me-3">
+            <strong>{{ note.title }}</strong><br>
+            <small class="text-muted">ID: {{ note.id }}</small>
+            <div>{{ note.text }}</div>
+          </div>
+          <form method="post" action="{{ url_for('delete', note_id=note.id) }}">
+            <button class="btn btn-outline-danger btn-sm">Удалить</button>
+          </form>
+        </li>
+      {% endfor %}
+    </ul>
+  {% else %}
+    <p class="text-muted">Пока нет заметок. Добавь первую!</p>
+  {% endif %}
+{% endblock %}

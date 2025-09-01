@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block content %}
+  <form method="post" class="vstack gap-3">
+    <div>
+      <label class="form-label">Заголовок</label>
+      <input name="title" class="form-control" maxlength="100" required>
+    </div>
+    <div>
+      <label class="form-label">Текст</label>
+      <textarea name="text" class="form-control" rows="5" required></textarea>
+    </div>
+    <button class="btn btn-success">Сохранить</button>
+    <a class="btn btn-link" href="{{ url_for('index') }}">Отмена</a>
+  </form>
+{% endblock %}
